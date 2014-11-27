@@ -1,0 +1,36 @@
+Theme:
+    type: entity
+    table: theme
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        libelle:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+    manyToOne:
+        iddomaine:
+            targetEntity: Domaine
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idDomaine:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idthemeparent:
+            targetEntity: Theme
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idThemeParent:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

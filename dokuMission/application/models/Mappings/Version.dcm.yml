@@ -1,0 +1,52 @@
+Version:
+    type: entity
+    table: version
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        datemaj:
+            type: datetime
+            nullable: true
+            column: dateMaj
+    manyToMany:
+        idpartie:
+            targetEntity: Partie
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idversion
+            joinTable:
+                name: partieversion
+                joinColumns:
+                    -
+                        name: idVersion
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: idPartie
+                        referencedColumnName: id
+            orderBy: null
+    manyToOne:
+        iddocument:
+            targetEntity: Document
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idDocument:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idauteur:
+            targetEntity: Utilisateur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idAuteur:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

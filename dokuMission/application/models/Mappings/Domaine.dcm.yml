@@ -1,0 +1,30 @@
+Domaine:
+    type: entity
+    table: domaine
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        libelle:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+        description:
+            type: text
+            nullable: true
+    manyToOne:
+        idmonde:
+            targetEntity: Monde
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMonde:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,56 @@
+Utilisateur:
+    type: entity
+    table: utilisateur
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        login:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+        password:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+        nom:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+        prenom:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+        mail:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+    manyToOne:
+        idgroupe:
+            targetEntity: Groupe
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idGroupe:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idmonde:
+            targetEntity: Monde
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMonde:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

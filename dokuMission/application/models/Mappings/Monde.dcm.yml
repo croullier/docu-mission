@@ -1,0 +1,17 @@
+Monde:
+    type: entity
+    table: monde
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        libelle:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

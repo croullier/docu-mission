@@ -1,0 +1,34 @@
+Partie:
+    type: entity
+    table: partie
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        titre:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        contenu:
+            type: text
+            nullable: true
+        ordre:
+            type: smallint
+            nullable: true
+        niveau:
+            type: smallint
+            nullable: true
+    manyToMany:
+        idversion:
+            targetEntity: Version
+            cascade: {  }
+            mappedBy: idpartie
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
