@@ -2,38 +2,38 @@
 
 
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Mapping as ORM;
 
 /**
  * Version
  *
- * @ORM\Table(name="version")
- * @ORM\Entity
+ * @Table(name="version")
+ * @Entity
  */
 class Version
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateMaj", type="datetime", nullable=true)
+     * @Column(name="dateMaj", type="datetime", nullable=true)
      */
     private $datemaj;
 
     /**
      * @var \Document
      *
-     * @ORM\ManyToOne(targetEntity="Document")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDocument", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Document")
+     * @JoinColumns({
+     *   @JoinColumn(name="idDocument", referencedColumnName="id")
      * })
      */
     private $iddocument;
@@ -41,9 +41,9 @@ class Version
     /**
      * @var \Utilisateur
      *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idAuteur", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Utilisateur")
+     * @JoinColumns({
+     *   @JoinColumn(name="idAuteur", referencedColumnName="id")
      * })
      */
     private $idauteur;
@@ -51,13 +51,13 @@ class Version
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Partie", inversedBy="idversion")
-     * @ORM\JoinTable(name="partieversion",
+     * @ManyToMany(targetEntity="Partie", inversedBy="idversion")
+     * @JoinTable(name="partieversion",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="idVersion", referencedColumnName="id")
+     *     @JoinColumn(name="idVersion", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idPartie", referencedColumnName="id")
+     *     @JoinColumn(name="idPartie", referencedColumnName="id")
      *   }
      * )
      */

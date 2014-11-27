@@ -2,38 +2,38 @@
 
 
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Mapping as ORM;
 
 /**
  * Theme
  *
- * @ORM\Table(name="theme")
- * @ORM\Entity
+ * @Table(name="theme")
+ * @Entity
  */
 class Theme
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=255, nullable=true)
+     * @Column(name="libelle", type="string", length=255, nullable=true)
      */
     private $libelle;
 
     /**
      * @var \Domaine
      *
-     * @ORM\ManyToOne(targetEntity="Domaine")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDomaine", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Domaine")
+     * @JoinColumns({
+     *   @JoinColumn(name="idDomaine", referencedColumnName="id")
      * })
      */
     private $iddomaine;
@@ -41,9 +41,9 @@ class Theme
     /**
      * @var \Theme
      *
-     * @ORM\ManyToOne(targetEntity="Theme")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idThemeParent", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Theme")
+     * @JoinColumns({
+     *   @JoinColumn(name="idThemeParent", referencedColumnName="id")
      * })
      */
     private $idthemeparent;

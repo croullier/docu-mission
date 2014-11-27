@@ -2,57 +2,57 @@
 
 
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Mapping as ORM;
 
 /**
  * Partie
  *
- * @ORM\Table(name="partie")
- * @ORM\Entity
+ * @Table(name="partie")
+ * @Entity
  */
 class Partie
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
+     * @Column(name="titre", type="string", length=255, nullable=true)
      */
     private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="text", nullable=true)
+     * @Column(name="contenu", type="text", nullable=true)
      */
     private $contenu;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="ordre", type="smallint", nullable=true)
+     * @Column(name="ordre", type="smallint", nullable=true)
      */
     private $ordre;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="niveau", type="smallint", nullable=true)
+     * @Column(name="niveau", type="smallint", nullable=true)
      */
     private $niveau;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Version", mappedBy="idpartie")
+     * @ManyToMany(targetEntity="Version", mappedBy="idpartie")
      */
     private $idversion;
 

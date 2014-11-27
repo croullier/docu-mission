@@ -2,22 +2,22 @@
 
 
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Mapping as ORM;
 
 /**
  * Droitdacces
  *
- * @ORM\Table(name="droitdacces")
- * @ORM\Entity
+ * @Table(name="droitdacces")
+ * @Entity
  */
 class Droitdacces
 {
     /**
      * @var \Theme
      *
-     * @ORM\OneToOne(targetEntity="Theme")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idTheme", referencedColumnName="id", unique=true)
+     * @OneToOne(targetEntity="Theme")
+     * @JoinColumns({
+     *   @JoinColumn(name="idTheme", referencedColumnName="id", unique=true)
      * })
      */
     private $idtheme;
@@ -25,9 +25,9 @@ class Droitdacces
     /**
      * @var \Groupe
      *
-     * @ORM\OneToOne(targetEntity="Groupe")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idGroupe", referencedColumnName="id", unique=true)
+     * @OneToOne(targetEntity="Groupe")
+     * @JoinColumns({
+     *   @JoinColumn(name="idGroupe", referencedColumnName="id", unique=true)
      * })
      */
     private $idgroupe;
@@ -35,9 +35,9 @@ class Droitdacces
     /**
      * @var \Droit
      *
-     * @ORM\OneToOne(targetEntity="Droit")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDroit", referencedColumnName="id", unique=true)
+     * @OneToOne(targetEntity="Droit")
+     * @JoinColumns({
+     *   @JoinColumn(name="idDroit", referencedColumnName="id", unique=true)
      * })
      */
     private $iddroit;
