@@ -1,0 +1,31 @@
+Document:
+    type: entity
+    table: document
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        titre:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        datecreation:
+            type: datetime
+            nullable: true
+            column: dateCreation
+    manyToOne:
+        idtheme:
+            targetEntity: Theme
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTheme:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
