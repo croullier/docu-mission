@@ -4,7 +4,7 @@
 
 
 
-$config['javascript_location'] = 'http://127.0.0.1/dokuMission/assets/js/jquery-2.1.1.js';
+$config['javascript_location'] = $_SERVER[ 'SERVER_ADDR'].'/dokuMission/assets/js/jquery-2.1.1.js';
 $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://127.0.0.1/dokuMission/';
+$config['base_url']	=$_SERVER[ 'SERVER_ADDR']. '/dokuMission/';
 
 /*
 |--------------------------------------------------------------------------
