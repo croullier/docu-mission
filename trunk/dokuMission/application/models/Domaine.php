@@ -2,45 +2,45 @@
 
 
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Mapping as ORM;
 
 /**
  * Domaine
  *
- * @ORM\Table(name="domaine")
- * @ORM\Entity
+ * @Table(name="domaine")
+ * @Entity
  */
 class Domaine
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=50, nullable=true)
+     * @Column(name="libelle", type="string", length=50, nullable=true)
      */
     private $libelle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var \Monde
      *
-     * @ORM\ManyToOne(targetEntity="Monde")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idMonde", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Monde")
+     * @JoinColumns({
+     *   @JoinColumn(name="idMonde", referencedColumnName="id")
      * })
      */
     private $idmonde;
