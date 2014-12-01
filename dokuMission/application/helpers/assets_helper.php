@@ -4,15 +4,15 @@ if (!defined('ASSETS_HELPER')){
     define('ASSETS_HELPER',true);
     function css_url($nom)
     {
-        return 'assets/css/' . $nom . '.css';
+        return base_url().'assets/css/' . $nom . '.css';
     }
     function js_url($nom)
     {
-        return 'assets/javacript/' . $nom . '.js';
+        return base_url().'assets/javacript/' . $nom . '.js';
     }
     function img_url($nom)
     {
-        return 'assets/images/' . $nom;
+        return base_url().'assets/images/' . $nom;
     }
     function img($nom, $alt = '')
     {
