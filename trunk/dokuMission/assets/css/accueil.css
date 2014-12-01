@@ -1,0 +1,12 @@
+@CHARSET "ISO-8859-1";
+
+h1{
+	position: center;
+	color: red;
+	font-family: arial, sans-serif;
+}
+
+#cadre1 {
+	padding-top: 30px;
+	text-align: center;	
+}
