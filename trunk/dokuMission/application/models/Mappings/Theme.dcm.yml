@@ -15,22 +15,22 @@ Theme:
             fixed: false
             nullable: true
     manyToOne:
-        iddomaine:
+        domaine:
             targetEntity: Domaine
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idDomaine:
+                domaine_id:
                     referencedColumnName: id
             orphanRemoval: false
-        idthemeparent:
+        theme:
             targetEntity: Theme
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idThemeParent:
+                theme_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

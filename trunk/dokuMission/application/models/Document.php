@@ -40,10 +40,10 @@ class Document
      *
      * @ManyToOne(targetEntity="Theme")
      * @JoinColumns({
-     *   @JoinColumn(name="idTheme", referencedColumnName="id")
+     *   @JoinColumn(name="theme_id", referencedColumnName="id")
      * })
      */
-    private $idtheme;
+    private $theme;
 
 
     /**
@@ -103,25 +103,25 @@ class Document
     }
 
     /**
-     * Set idtheme
+     * Set theme
      *
-     * @param \Theme $idtheme
+     * @param \Theme $theme
      * @return Document
      */
-    public function setIdtheme(\Theme $idtheme = null)
+    public function setTheme(\Theme $theme = null)
     {
-        $this->idtheme = $idtheme;
+        $this->theme = $theme;
     
         return $this;
     }
 
     /**
-     * Get idtheme
+     * Get theme
      *
      * @return \Theme 
      */
-    public function getIdtheme()
+    public function getTheme()
     {
-        return $this->idtheme;
+        return $this->theme;
     }
 }

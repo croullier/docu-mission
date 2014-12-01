@@ -33,42 +33,42 @@ class Version
      *
      * @ManyToOne(targetEntity="Document")
      * @JoinColumns({
-     *   @JoinColumn(name="idDocument", referencedColumnName="id")
+     *   @JoinColumn(name="document_id", referencedColumnName="id")
      * })
      */
-    private $iddocument;
+    private $document;
 
     /**
      * @var \Utilisateur
      *
      * @ManyToOne(targetEntity="Utilisateur")
      * @JoinColumns({
-     *   @JoinColumn(name="idAuteur", referencedColumnName="id")
+     *   @JoinColumn(name="utilisateur_id", referencedColumnName="id")
      * })
      */
-    private $idauteur;
+    private $utilisateur;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ManyToMany(targetEntity="Partie", inversedBy="idversion")
+     * @ManyToMany(targetEntity="Partie", inversedBy="version")
      * @JoinTable(name="partieversion",
      *   joinColumns={
-     *     @JoinColumn(name="idVersion", referencedColumnName="id")
+     *     @JoinColumn(name="version_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @JoinColumn(name="idPartie", referencedColumnName="id")
+     *     @JoinColumn(name="partie_id", referencedColumnName="id")
      *   }
      * )
      */
-    private $idpartie;
+    private $partie;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idpartie = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->partie = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -105,81 +105,81 @@ class Version
     }
 
     /**
-     * Set iddocument
+     * Set document
      *
-     * @param \Document $iddocument
+     * @param \Document $document
      * @return Version
      */
-    public function setIddocument(\Document $iddocument = null)
+    public function setDocument(\Document $document = null)
     {
-        $this->iddocument = $iddocument;
+        $this->document = $document;
     
         return $this;
     }
 
     /**
-     * Get iddocument
+     * Get document
      *
      * @return \Document 
      */
-    public function getIddocument()
+    public function getDocument()
     {
-        return $this->iddocument;
+        return $this->document;
     }
 
     /**
-     * Set idauteur
+     * Set utilisateur
      *
-     * @param \Utilisateur $idauteur
+     * @param \Utilisateur $utilisateur
      * @return Version
      */
-    public function setIdauteur(\Utilisateur $idauteur = null)
+    public function setUtilisateur(\Utilisateur $utilisateur = null)
     {
-        $this->idauteur = $idauteur;
+        $this->utilisateur = $utilisateur;
     
         return $this;
     }
 
     /**
-     * Get idauteur
+     * Get utilisateur
      *
      * @return \Utilisateur 
      */
-    public function getIdauteur()
+    public function getUtilisateur()
     {
-        return $this->idauteur;
+        return $this->utilisateur;
     }
 
     /**
-     * Add idpartie
+     * Add partie
      *
-     * @param \Partie $idpartie
+     * @param \Partie $partie
      * @return Version
      */
-    public function addIdpartie(\Partie $idpartie)
+    public function addPartie(\Partie $partie)
     {
-        $this->idpartie[] = $idpartie;
+        $this->partie[] = $partie;
     
         return $this;
     }
 
     /**
-     * Remove idpartie
+     * Remove partie
      *
-     * @param \Partie $idpartie
+     * @param \Partie $partie
      */
-    public function removeIdpartie(\Partie $idpartie)
+    public function removePartie(\Partie $partie)
     {
-        $this->idpartie->removeElement($idpartie);
+        $this->partie->removeElement($partie);
     }
 
     /**
-     * Get idpartie
+     * Get partie
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIdpartie()
+    public function getPartie()
     {
-        return $this->idpartie;
+        return $this->partie;
     }
 }

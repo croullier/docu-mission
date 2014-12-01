@@ -35,22 +35,22 @@ Utilisateur:
             fixed: false
             nullable: true
     manyToOne:
-        idgroupe:
-            targetEntity: Groupe
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                idGroupe:
-                    referencedColumnName: id
-            orphanRemoval: false
-        idmonde:
+        monde:
             targetEntity: Monde
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idMonde:
+                monde_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        groupe:
+            targetEntity: Groupe
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                groupe_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

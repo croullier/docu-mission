@@ -18,13 +18,13 @@ Domaine:
             type: text
             nullable: true
     manyToOne:
-        idmonde:
+        monde:
             targetEntity: Monde
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idMonde:
+                monde_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

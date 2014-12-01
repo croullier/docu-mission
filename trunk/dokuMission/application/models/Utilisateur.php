@@ -57,23 +57,24 @@ class Utilisateur
     private $mail;
 
     /**
-     * @var \Groupe
-     *
-     * @ManyToOne(targetEntity="Groupe")
-     *   @JoinColumn(name="idGroupe", referencedColumnName="id")
-     * 
-     */
-    private $groupe;
-
-    /**
      * @var \Monde
      *
      * @ManyToOne(targetEntity="Monde")
      * @JoinColumns({
-     *   @JoinColumn(name="idMonde", referencedColumnName="id")
+     *   @JoinColumn(name="monde_id", referencedColumnName="id")
      * })
      */
-    private $idmonde;
+    private $monde;
+
+    /**
+     * @var \Groupe
+     *
+     * @ManyToOne(targetEntity="Groupe")
+     * @JoinColumns({
+     *   @JoinColumn(name="groupe_id", referencedColumnName="id")
+     * })
+     */
+    private $groupe;
 
 
     /**
@@ -202,12 +203,35 @@ class Utilisateur
     }
 
     /**
-     * Set idgroupe
+     * Set monde
      *
-     * @param \Groupe $idgroupe
+     * @param \Monde $monde
      * @return Utilisateur
      */
-    public function setGroupe($groupe)
+    public function setMonde(\Monde $monde = null)
+    {
+        $this->monde = $monde;
+    
+        return $this;
+    }
+
+    /**
+     * Get monde
+     *
+     * @return \Monde 
+     */
+    public function getMonde()
+    {
+        return $this->monde;
+    }
+
+    /**
+     * Set groupe
+     *
+     * @param \Groupe $groupe
+     * @return Utilisateur
+     */
+    public function setGroupe(\Groupe $groupe = null)
     {
         $this->groupe = $groupe;
     
@@ -215,35 +239,12 @@ class Utilisateur
     }
 
     /**
-     * Get idgroupe
+     * Get groupe
      *
      * @return \Groupe 
      */
     public function getGroupe()
     {
         return $this->groupe;
-    }
-
-    /**
-     * Set idmonde
-     *
-     * @param \Monde $idmonde
-     * @return Utilisateur
-     */
-    public function setIdmonde(\Monde $idmonde = null)
-    {
-        $this->idmonde = $idmonde;
-    
-        return $this;
-    }
-
-    /**
-     * Get idmonde
-     *
-     * @return \Monde 
-     */
-    public function getIdmonde()
-    {
-        return $this->idmonde;
     }
 }

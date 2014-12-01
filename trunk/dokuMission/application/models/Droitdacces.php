@@ -17,98 +17,98 @@ class Droitdacces
      *
      * @OneToOne(targetEntity="Theme")
      * @JoinColumns({
-     *   @JoinColumn(name="idTheme", referencedColumnName="id", unique=true)
+     *   @JoinColumn(name="theme_id", referencedColumnName="id", unique=true)
      * })
      */
-    private $idtheme;
+    private $theme;
 
     /**
      * @var \Groupe
      *
      * @OneToOne(targetEntity="Groupe")
      * @JoinColumns({
-     *   @JoinColumn(name="idGroupe", referencedColumnName="id", unique=true)
+     *   @JoinColumn(name="groupe_id", referencedColumnName="id", unique=true)
      * })
      */
-    private $idgroupe;
+    private $groupe;
 
     /**
      * @var \Droit
      *
      * @OneToOne(targetEntity="Droit")
      * @JoinColumns({
-     *   @JoinColumn(name="idDroit", referencedColumnName="id", unique=true)
+     *   @JoinColumn(name="droit_id", referencedColumnName="id", unique=true)
      * })
      */
-    private $iddroit;
+    private $droit;
 
 
     /**
-     * Set idtheme
+     * Set theme
      *
-     * @param \Theme $idtheme
+     * @param \Theme $theme
      * @return Droitdacces
      */
-    public function setIdtheme(\Theme $idtheme = null)
+    public function setTheme(\Theme $theme = null)
     {
-        $this->idtheme = $idtheme;
+        $this->theme = $theme;
     
         return $this;
     }
 
     /**
-     * Get idtheme
+     * Get theme
      *
      * @return \Theme 
      */
-    public function getIdtheme()
+    public function getTheme()
     {
-        return $this->idtheme;
+        return $this->theme;
     }
 
     /**
-     * Set idgroupe
+     * Set groupe
      *
-     * @param \Groupe $idgroupe
+     * @param \Groupe $groupe
      * @return Droitdacces
      */
-    public function setIdgroupe(\Groupe $idgroupe = null)
+    public function setGroupe(\Groupe $groupe = null)
     {
-        $this->idgroupe = $idgroupe;
+        $this->groupe = $groupe;
     
         return $this;
     }
 
     /**
-     * Get idgroupe
+     * Get groupe
      *
      * @return \Groupe 
      */
-    public function getIdgroupe()
+    public function getGroupe()
     {
-        return $this->idgroupe;
+        return $this->groupe;
     }
 
     /**
-     * Set iddroit
+     * Set droit
      *
-     * @param \Droit $iddroit
+     * @param \Droit $droit
      * @return Droitdacces
      */
-    public function setIddroit(\Droit $iddroit = null)
+    public function setDroit(\Droit $droit = null)
     {
-        $this->iddroit = $iddroit;
+        $this->droit = $droit;
     
         return $this;
     }
 
     /**
-     * Get iddroit
+     * Get droit
      *
      * @return \Droit 
      */
-    public function getIddroit()
+    public function getDroit()
     {
-        return $this->iddroit;
+        return $this->droit;
     }
 }
