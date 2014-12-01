@@ -50,7 +50,7 @@ class Doctrine {
 		//$yamlDriver = new \Doctrine\ORM\Mapping\Driver\YamlDriver(APPPATH.'models/Mappings');
 		$driverImpl = $config->newDefaultAnnotationDriver(APPPATH.'models');
 		$config->setMetadataDriverImpl($driverImpl);
-		/* $yamlDriver = new \Doctrine\ORM\Mapping\Driver\YamlDriver(APPPATH.'models/Mappings');
+		/*$yamlDriver = new \Doctrine\ORM\Mapping\Driver\YamlDriver(APPPATH.'models/Mappings');
         $config->setMetadataDriverImpl($yamlDriver);*/
 	
 		// Database connection information

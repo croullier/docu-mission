@@ -2,31 +2,31 @@ Droitdacces:
     type: entity
     table: droitdacces
     oneToOne:
-        idtheme:
+        theme:
             targetEntity: Theme
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idTheme:
+                theme_id:
                     referencedColumnName: id
             orphanRemoval: false
-        idgroupe:
+        groupe:
             targetEntity: Groupe
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idGroupe:
+                groupe_id:
                     referencedColumnName: id
             orphanRemoval: false
-        iddroit:
+        droit:
             targetEntity: Droit
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idDroit:
+                droit_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

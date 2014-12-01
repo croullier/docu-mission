@@ -14,39 +14,39 @@ Version:
             nullable: true
             column: dateMaj
     manyToMany:
-        idpartie:
+        partie:
             targetEntity: Partie
             cascade: {  }
             mappedBy: null
-            inversedBy: idversion
+            inversedBy: version
             joinTable:
                 name: partieversion
                 joinColumns:
                     -
-                        name: idVersion
+                        name: version_id
                         referencedColumnName: id
                 inverseJoinColumns:
                     -
-                        name: idPartie
+                        name: partie_id
                         referencedColumnName: id
             orderBy: null
     manyToOne:
-        iddocument:
+        document:
             targetEntity: Document
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idDocument:
+                document_id:
                     referencedColumnName: id
             orphanRemoval: false
-        idauteur:
+        utilisateur:
             targetEntity: Utilisateur
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idAuteur:
+                utilisateur_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

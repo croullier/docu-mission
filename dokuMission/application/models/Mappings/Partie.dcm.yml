@@ -24,10 +24,10 @@ Partie:
             type: smallint
             nullable: true
     manyToMany:
-        idversion:
+        version:
             targetEntity: Version
             cascade: {  }
-            mappedBy: idpartie
+            mappedBy: partie
             inversedBy: null
             joinTable: null
             orderBy: null

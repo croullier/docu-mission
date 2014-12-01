@@ -52,16 +52,16 @@ class Partie
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ManyToMany(targetEntity="Version", mappedBy="idpartie")
+     * @ManyToMany(targetEntity="Version", mappedBy="partie")
      */
-    private $idversion;
+    private $version;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idversion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->version = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -167,35 +167,35 @@ class Partie
     }
 
     /**
-     * Add idversion
+     * Add version
      *
-     * @param \Version $idversion
+     * @param \Version $version
      * @return Partie
      */
-    public function addIdversion(\Version $idversion)
+    public function addVersion(\Version $version)
     {
-        $this->idversion[] = $idversion;
+        $this->version[] = $version;
     
         return $this;
     }
 
     /**
-     * Remove idversion
+     * Remove version
      *
-     * @param \Version $idversion
+     * @param \Version $version
      */
-    public function removeIdversion(\Version $idversion)
+    public function removeVersion(\Version $version)
     {
-        $this->idversion->removeElement($idversion);
+        $this->version->removeElement($version);
     }
 
     /**
-     * Get idversion
+     * Get version
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIdversion()
+    public function getVersion()
     {
-        return $this->idversion;
+        return $this->version;
     }
 }

@@ -19,13 +19,13 @@ Document:
             nullable: true
             column: dateCreation
     manyToOne:
-        idtheme:
+        theme:
             targetEntity: Theme
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                idTheme:
+                theme_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

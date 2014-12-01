@@ -40,10 +40,10 @@ class Domaine
      *
      * @ManyToOne(targetEntity="Monde")
      * @JoinColumns({
-     *   @JoinColumn(name="idMonde", referencedColumnName="id")
+     *   @JoinColumn(name="monde_id", referencedColumnName="id")
      * })
      */
-    private $idmonde;
+    private $monde;
 
 
     /**
@@ -103,25 +103,25 @@ class Domaine
     }
 
     /**
-     * Set idmonde
+     * Set monde
      *
-     * @param \Monde $idmonde
+     * @param \Monde $monde
      * @return Domaine
      */
-    public function setIdmonde(\Monde $idmonde = null)
+    public function setMonde(\Monde $monde = null)
     {
-        $this->idmonde = $idmonde;
+        $this->monde = $monde;
     
         return $this;
     }
 
     /**
-     * Get idmonde
+     * Get monde
      *
      * @return \Monde 
      */
-    public function getIdmonde()
+    public function getMonde()
     {
-        return $this->idmonde;
+        return $this->monde;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-define('APPPATH', 'c:/wamp/www/doctrineProject/application/');
+define('APPPATH', 'c:/wamp/www/dokuMission/application/');
 define('BASEPATH', APPPATH);
 define('ENVIRONMENT', 'production');
  
