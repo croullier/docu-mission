@@ -4,7 +4,7 @@
 
 
 
-$config['javascript_location'] = 'htt://'.$_SERVER[ 'SERVER_ADDR'].'/dokuMission/assets/js/jquery-2.1.1.js';
+$config['javascript_location'] = 'htt://p'.$_SERVER[ 'SERVER_ADDR'].'/dokuMission/assets/js/jquery-2.1.1.js';
 $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
 /*
 |--------------------------------------------------------------------------
