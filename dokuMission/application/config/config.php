@@ -20,7 +20,7 @@ $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
 | path to your installation.
 |
 */
-$config['base_url']	=$_SERVER[ 'SERVER_ADDR']. '/dokuMission/';
+$config['base_url']	= 'http://'.$_SERVER[ 'SERVER_ADDR']. '/dokuMission/';
 
 /*
 |--------------------------------------------------------------------------
