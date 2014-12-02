@@ -957,6 +957,7 @@ class CI_JqueryUtils extends CI_JsUtils {
 		$output = ($script_tags === FALSE) ? $script : $this->inline($script);
 
 		$this->CI->load->vars(array($view_var => $output));
+		return $output;
 
 	}
 	
