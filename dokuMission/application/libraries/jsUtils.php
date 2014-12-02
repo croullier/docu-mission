@@ -607,7 +607,7 @@ class CI_JsUtils {
 	 */
 	function compile($view_var = 'script_foot', $script_tags = TRUE)
 	{
-		$this->js->_compile($view_var, $script_tags);
+		return $this->js->_compile($view_var, $script_tags);
 	}
 
 	/**
