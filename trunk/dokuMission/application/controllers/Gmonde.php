@@ -43,7 +43,6 @@ class Gmonde extends \CI_Controller {
 		$this->jsutils->doSomethingOn("#modifier", "append","'<input type=\"hidden\" name=\"key\" value=\"$param\">'");
 		$this->jsutils->external();
 		echo $this->jsutils->compile();
-		
 	}
 	
 	
