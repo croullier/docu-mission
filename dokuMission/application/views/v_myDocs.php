@@ -1,4 +1,5 @@
 <?php
+//var_dump($documents);
 foreach ($documents as $docs){
-	echo $docs->getTitre();
+	echo $docs->getDocument()->getTitre()."<br>";
 }

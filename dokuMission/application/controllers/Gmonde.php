@@ -1,17 +1,20 @@
 <?php
 class Gmonde extends \CI_Controller {
-	function __construct(){
+	
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->library('jsUtils');
 	}
 	
 	public function index(){
-		$query = $this->doctrine->em->createQuery("SELECT m FROM Monde m");
-		$monde = $query->getResult();
-		$this->load->view('v_monde',array('mondes'=>$monde));		
+		
 		$this->jsutils->getAndBindTo("#update","click","Gmonde/monde_modif","#modifier");
 		$this->jsutils->external();
 		$this->jsutils->compile();
+		$query = $this->doctrine->em->createQuery("SELECT m FROM Monde m");
+		$monde = $query->getResult();
+		$this->load->view('v_monde',array('mondes'=>$monde));
 	}
 	
 	public function add(){	
