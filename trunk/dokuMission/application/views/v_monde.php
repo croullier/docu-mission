@@ -1,5 +1,7 @@
- 
+ <?php echo $library_src;?>
+<?php echo $script_foot;?>
 <?php 
+
 echo validation_errors();
 echo form_open('Gmonde/add/');
 foreach ($mondes as $monde){
