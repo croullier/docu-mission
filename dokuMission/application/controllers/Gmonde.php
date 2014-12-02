@@ -9,7 +9,8 @@ class Gmonde extends \CI_Controller {
 	
 	public function index(){
 		
-		$this->jsutils->getAndBindTo("#update","click","Gmonde/monde_modif","#modifier");
+	//	$this->jsutils->getAndBindTo(".update","click","Gmonde/monde_modif","#message");
+		$this->jsutils->click(".update",$this->jsutils->show("#modifier"));
 		$this->jsutils->external();
 		$this->jsutils->compile();
 		$query = $this->doctrine->em->createQuery("SELECT m FROM Monde m");
@@ -38,7 +39,8 @@ class Gmonde extends \CI_Controller {
 	}
 	
 	public function monde_modif(){
-		$this->jsUtils->doSomeThingOn("#modifier","show");
-		echo"lol";
+
 	}
+	
+	
 }

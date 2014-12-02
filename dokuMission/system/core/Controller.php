@@ -28,6 +28,11 @@
  * @link		http://codeigniter.com/user_guide/general/controllers.html
  */
 class CI_Controller {
+	
+	/**
+	 * @var CI_JsUtils
+	 */
+	private $jsutils;
 
 	private static $instance;
 
