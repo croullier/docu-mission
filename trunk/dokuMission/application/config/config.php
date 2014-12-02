@@ -1,10 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
+$protocole=((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http")."://";
 
-
-
-$config['javascript_location'] = 'htt://p'.$_SERVER[ 'SERVER_ADDR'].'/dokuMission/assets/js/jquery-2.1.1.js';
+$config['javascript_location'] = $protocole.$_SERVER[ 'SERVER_ADDR'].'/dokuMission/assets/js/jquery-2.1.1.js';
 $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +19,10 @@ $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://'.$_SERVER[ 'SERVER_ADDR']. '/dokuMission/';
-
+//$config['base_url']	= 'http://'.$_SERVER[ 'SERVER_ADDR']. '/dokuMission/';
+$config['base_url'] = $protocole;
+$config['base_url'] .= $_SERVER['HTTP_HOST'];
+$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 /*
 |--------------------------------------------------------------------------
 | Index File
