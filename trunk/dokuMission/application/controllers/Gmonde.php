@@ -66,8 +66,8 @@ class Gmonde extends \BaseCtrl {
 	
 	public function delete($param){
 		$query = $this->doctrine->em->createQuery("DELETE Monde m  WHERE m.id='".$param."'");
-		$numUpdated = $query->execute();
-		if($numUpdated ==1){
+		$numDeleted= $query->execute();
+		if($numDeleted ==1){
 			echo "Suprimé";
 			$this->jsutils->get("/dokuMission/Gmonde/refresh/","body");
 			echo $this->jsutils->compile();
