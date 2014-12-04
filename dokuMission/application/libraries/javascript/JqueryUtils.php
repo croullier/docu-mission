@@ -1162,7 +1162,7 @@ class CI_JqueryUtils extends CI_JsUtils {
 	 * @param string $function
 	 */
 	public function _postFormAndBindTo($element,$event,$url,$form,$responseElement="",$validation=false,$function=NULL,$attr="id"){
-		$script= $this->_add_event($element,  $this->_postForm($url,$form,$responseElement,$validation,$function,$attr));
+		$script= $this->_add_event($element,  $this->_postForm($url,$form,$responseElement,$validation,$function,$attr), $event);
 		return $script;
 	}
 	
