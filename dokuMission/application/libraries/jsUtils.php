@@ -927,7 +927,19 @@ class CI_JsUtils {
 	public function postForm($url,$form,$responseElement,$validation=false,$function=NULL,$attr="id"){
 		return $this->js->_postForm($url, $form, $responseElement,$validation,$function,$attr);
 	}
-	
+	/**
+	 * Effectue un post vers $url sur l'évènement $event de $element en passant les paramètres du formulaire $form
+	 * puis affiche le résultat dans $responseElement
+	 * @param string $element
+	 * @param string $event
+	 * @param string $url
+	 * @param string $form
+	 * @param string $responseElement
+	 * @param string $function
+	 */
+	public function postFormAndBindTo($element,$event,$url,$form,$responseElement="",$validation=false,$function=NULL,$attr="id"){
+		return $this->js->_postFormAndBindTo($element,$event,$url,$form,$responseElement,$validation,$function,$attr);
+	}
 	/**
 	 * Appelle la méthode JQuery $someThing sur $element avec passage éventuel du paramètre $param
 	 * @param string $element

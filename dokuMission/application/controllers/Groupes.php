@@ -1,5 +1,5 @@
 <?php
-class Groupes extends \CI_Controller {
+class Groupes extends \BaseCtrl {
 	
 	public function all(){
 		$query = $this->doctrine->em->createQuery("SELECT g FROM Groupe g ");

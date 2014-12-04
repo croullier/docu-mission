@@ -1,5 +1,5 @@
 <?php
-class MyDocs extends \CI_Controller {
+class MyDocs extends \BaseCtrl {
 	
 	/**
 	 * Affiche la liste de mes docs

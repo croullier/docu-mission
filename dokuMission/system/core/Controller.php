@@ -29,11 +29,6 @@
  */
 class CI_Controller {
 	
-	/**
-	 * @var CI_JsUtils
-	 */
-	private $jsutils;
-
 	private static $instance;
 
 	/**
