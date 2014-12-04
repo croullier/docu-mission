@@ -15,20 +15,14 @@ foreach ($mondes as $monde){
 <br>
 Ajouter: <input type='text' name='monde'><input type='submit' value='Insérer'>
 
-Ajouter: <input type='text' name='monde'><input type='submit' value='Ins�rer'>
 <?php
 echo form_close();
 ?>
 <?php 	echo form_open('Gmonde/update/'); ?>
-	<div id="modifier" style="display:none;">
-
-
+	
 	<div id="modifier" style="display:none;">
 		Modifier: <input type='text' name='update_monde'><input type='submit' value='Insérer'>
 
-		Modifier: <input type='text' name='update_monde' ><input type='submit' value='Ins�rer'>
-		
-		
 	</div>
 	<?php echo form_close(); ?>
 <div id="message">

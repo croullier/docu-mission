@@ -10,17 +10,12 @@ class Gmonde extends \BaseCtrl {
 		
 		$this->refresh();
 	}
-	public function refresh(){
 
-		$this->refresh();
-		
-
-	}
-	
 	public function refresh(){
 		
 		$this->jsutils->getAndBindTo(".delete","click","Gmonde/delete","#message","{}");
 		$this->jsutils->getAndBindTo(".update","click","Gmonde/monde_modif","#message","{}");
+		$this->jsutils->click(".update",$this->jsutils->show("#modifier"));
 		$this->jsutils->external();
 		$this->jsutils->compile();
 		$query = $this->doctrine->em->createQuery("SELECT m FROM Monde m");
@@ -57,8 +52,6 @@ class Gmonde extends \BaseCtrl {
 	}
 	
 
-	public function monde_update($param){
-	}
 	public function update(){
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('update_monde', 'Monde', 'trim|required|min_length[1]|max_length[12]|xss_clean');
@@ -86,8 +79,7 @@ class Gmonde extends \BaseCtrl {
 		$query->getSingleResult();
 		//echo JsUtils::get("/trivia/CPartie/refresh","{}","body");
 		echo "Supprim�";
-		$this->jsutils->get("/dokuMission/Gmonde/refresh","{}","body");
-		$this->jsutils->doSomethingOn("#message", "hide",5000);
+		
 	}
 
 }
