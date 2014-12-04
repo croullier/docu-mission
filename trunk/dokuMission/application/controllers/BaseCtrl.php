@@ -3,7 +3,6 @@
 class BaseCtrl extends \CI_Controller{
 	
 	/**
-	 * 
 	 * @var Modelutils
 	 */
 	private $modelutils;

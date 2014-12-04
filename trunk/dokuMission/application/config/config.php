@@ -365,6 +365,19 @@ $config['proxy_ips'] = '';
 
 
 /* End of file config.php */
+
 /* Location: ./application/config/config.php */
 $config['javascript_location'] = $config['base_url'].'assets/js/jquery-2.1.1.js';
 $config['javascript_ajax_img'] = 'assets/images/ajax-loader.gif';
+
+function __autoload($class){
+	if(strpos($class, 'CI_') !== 0){
+		$paths = array(APPPATH . 'core/', APPPATH . 'controllers/');
+		foreach($paths as $path){
+			if (file_exists($path . $class . EXT)){
+				@include_once( $path . $class . EXT );
+				break;
+			}
+		}
+	}
+}
