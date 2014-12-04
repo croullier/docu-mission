@@ -1,5 +1,5 @@
 <?php
-class Utilisateurs extends \CI_Controller {
+class Utilisateurs extends \BaseCtrl {
 	
 	public function all(){
 		$query = $this->doctrine->em->createQuery("SELECT u FROM Utilisateur u join u.groupe g");

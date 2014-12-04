@@ -6,11 +6,12 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
+ * @author		ExpressionEngine Dev Team &jcheron
  * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license		http://www.codeigniter.com/user_guide/license.html
  * @link		http://www.codeigniter.com
  * @since		Version 1.0
+ * @version		1.02
  * @filesource
  */
 

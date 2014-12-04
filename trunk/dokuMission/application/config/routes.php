@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+$route['uneroute']="test/affiche/15";
 
 
 /* End of file routes.php */
