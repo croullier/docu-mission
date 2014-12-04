@@ -3,7 +3,6 @@
  <?php echo $library_src;?>
 <?php echo $script_foot;?>
 <?php 
-
 echo validation_errors();
 echo form_open('Gmonde/add/');
 
@@ -12,14 +11,22 @@ foreach ($mondes as $monde){
 }
 
 ?>
-Ajouter: <input type='text' name='monde'><input type='submit' value='Insérer'>
+
+<br>
+Ajouter: <input type='text' name='monde'><input type='submit' value='InsÃ©rer'>
+
+Ajouter: <input type='text' name='monde'><input type='submit' value='Insï¿½rer'>
 <?php
 echo form_close();
 ?>
 <?php 	echo form_open('Gmonde/update/'); ?>
 	<div id="modifier" style="display:none;">
 
-		Modifier: <input type='text' name='update_monde' ><input type='submit' value='Insérer'>
+
+	<div id="modifier" style="display:none;">
+		Modifier: <input type='text' name='update_monde'><input type='submit' value='InsÃ©rer'>
+
+		Modifier: <input type='text' name='update_monde' ><input type='submit' value='Insï¿½rer'>
 		
 		
 	</div>
