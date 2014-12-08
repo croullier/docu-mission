@@ -1,4 +1,4 @@
- <body>
+
 <div id="contain">
  <?php echo $library_src;?>
 <?php echo $script_foot;?>

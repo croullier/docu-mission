@@ -64,6 +64,7 @@ h1{
 
 .space{
 	margin-right:5px;
+	float:left;
 }
 
 
@@ -127,7 +128,4 @@ h1{
     outline: 0;
 }
 
-.space{
-	float:left;
-}
 
