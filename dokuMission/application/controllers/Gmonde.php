@@ -12,6 +12,7 @@ class Gmonde extends \BaseCtrl {
 		$this->load->view("v_header");
 		$this->load->view("v_left");
 		$this->refresh();
+		$this->load->view("v_footer");
 	}
 
 	public function refresh(){
