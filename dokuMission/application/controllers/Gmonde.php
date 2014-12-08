@@ -7,7 +7,8 @@ class Gmonde extends \BaseCtrl {
 		$this->load->library('jsUtils');
 	}
 	public function index(){
-		
+		$this->load->view("v_header");
+		$this->load->view("v_left");
 		$this->refresh();
 	}
 

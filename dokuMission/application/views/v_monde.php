@@ -1,12 +1,12 @@
  <body>
-
+<div id="contain">
  <?php echo $library_src;?>
 <?php echo $script_foot;?>
 <?php 
 
 
 foreach ($mondes as $monde){
-	echo("<table border=1><tr><td>".$monde->getLibelle()."</td><td><a href='#' class='update' id='".$monde->getId()."'>Modif</a></td><td><a href='#' class='delete' id='".$monde->getId()."'>Suppr</a></td></tr></table>");
+	echo("<div class='underline'>".$monde->getLibelle()."<div class='border'></div><a href='#' class='update' id='".$monde->getId()."'>Modif</a><div class='border'></div><a href='#' class='delete' id='".$monde->getId()."'>Suppr</a></div>");
 }
 
 ?>
@@ -24,4 +24,4 @@ foreach ($mondes as $monde){
 	
 <div id="message">
 </div>
-
+</div>

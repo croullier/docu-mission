@@ -16,10 +16,6 @@
 				<button class="connexion">Connexion</button>
 			<hr>
 	</div>
-    <div id="sidebar">
-    	<input class="textbox"type="text"><br>
-        <button class="rechercher">Rechercher</button>
-    </div>
-    <div id="contenu">
-    </div>
 </div>
+   
+
