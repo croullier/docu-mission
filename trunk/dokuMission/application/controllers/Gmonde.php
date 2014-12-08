@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Gmonde extends \BaseCtrl {
 	
 	public function __construct()
@@ -7,6 +8,7 @@ class Gmonde extends \BaseCtrl {
 		$this->load->library('jsUtils');
 	}
 	public function index(){
+		define("WH", "Accueil->Admin->Gestion->Monde");
 		$this->load->view("v_header");
 		$this->load->view("v_left");
 		$this->refresh();
