@@ -12,9 +12,13 @@ class Gmonde extends \BaseCtrl {
 	}
 
 	public function refresh(){
+		//Poste le formulaire de modification des mondes
 		$this->jsutils->postFormAndBindTo("#btAdd", "click", "/dokuMission/Gmonde/add/", "frmAddMonde","#message");
+		//Supprime le monde sur lequel on a cliqué
 		$this->jsutils->getAndBindTo(".delete","click","Gmonde/delete","#message","{}");
+		//Appel la méthode monde_modif 
 		$this->jsutils->getAndBindTo(".update","click","Gmonde/monde_modif","#message","{}");
+		//Affiche le formulaire de mise à jour du nom
 		$this->jsutils->click(".update",$this->jsutils->show("#modifier"));
 		$this->jsutils->external();
 		$this->jsutils->compile();
@@ -23,13 +27,18 @@ class Gmonde extends \BaseCtrl {
 		$this->load->view('v_monde',array('mondes'=>$monde));
 	}
 	
+	/**
+	 * Ajouter le monde à la Base de donnée 
+	 */
 	public function add(){	
 		if(!empty($_POST['libelle'])){
+			//Supprime les caractère non acceptable
 			$libelle=htmlspecialchars($_POST['libelle']);
 			$monde = new Monde();
 			$monde->setLibelle($libelle);
 			$this->doctrine->em->persist($monde);
 			$this->doctrine->em->flush();
+			//On test que l'insertion à fonctionné
 			if($monde->getId()!=null){
 				echo "Ajouté";
 				$this->jsutils->get("/dokuMission/Gmonde/refresh/","body");
@@ -38,7 +47,10 @@ class Gmonde extends \BaseCtrl {
 		}
 	}
 	
-	
+	/**
+	 * Ajoute l'id du monde dans le formulaire et appel la méthode update pour mettre à jour dans la base
+	 * @param $param
+	 */
 	public function monde_modif($param){
 		
 		$this->jsutils->doSomethingOn("#frmUpdateMonde", "append","'<input type=\"hidden\" name=\"key\" value=\"$param\">'");
@@ -47,12 +59,15 @@ class Gmonde extends \BaseCtrl {
 		echo $this->jsutils->compile();
 	}
 	
-
+	/**
+	 * Met à jour dans la base le nom du monde
+	 */
 	public function update(){
 		if(!empty($_POST['libelle']) && !empty($_POST['key'])){
 			$libelle=htmlspecialchars($_POST['libelle']);
 			$key=htmlspecialchars($_POST['key']);
 			$query = $this->doctrine->em->createQuery("UPDATE Monde m SET m.libelle='".$libelle."' WHERE m.id='".$key."' ");
+			//execute la requête
 			$numUpdated = $query->execute();
 			if($numUpdated ==1){
 				echo "Mis à jour";
@@ -63,7 +78,10 @@ class Gmonde extends \BaseCtrl {
 		
 	}	
 
-	
+	/**
+	 * Supprime le monde
+	 * @param $param
+	 */
 	public function delete($param){
 		$query = $this->doctrine->em->createQuery("DELETE Monde m  WHERE m.id='".$param."'");
 		$numDeleted= $query->execute();
