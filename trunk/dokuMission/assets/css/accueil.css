@@ -7,8 +7,9 @@
 
 body{
 	background : #edeceb;
-	margin:0;
+	margin:0 auto;
 	padding:0;
+	width:900px;
 }
 
 h1{
@@ -34,6 +35,15 @@ h1{
   	background: #edeceb;
   	padding: 10px 20px 10px 20px;
   	text-decoration: none;
+}
+
+#modifier{
+	display: none;
+}
+
+.underline{
+	border-bottom:1px solid blue;
+	width:250px;
 }
 
 .connexion:hover {
@@ -65,20 +75,21 @@ h1{
 }
 
 #conteneur {
-	width:1350px; 
+	width:900px; 
 	margin:0 auto;
-	}
+}
 	
 #sidebar {
-	position:absolute;
-	 width:250px;
-	 height: 500px;
-	 background: #DBDEDD;
-	 }
-	 
-#contenu {
-	margin-left:170px;
-	}
+	width:250px;
+	height:100%;
+	background:#DBDEDD;
+	float:left;
+}
+	
+#contain{
+	width:450px;
+	float:left;
+}
 
 .textbox {
 	margin-top: 8px;
@@ -99,3 +110,4 @@ h1{
     background-color: #E7E8E7;
     outline: 0;
 }
+
