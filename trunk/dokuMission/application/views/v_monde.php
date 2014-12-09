@@ -22,6 +22,7 @@ foreach ($mondes as $monde){
 			<label for="libelle">Modifier:</label> <input type="text" name="libelle" id="libelle">
 			<input type="button" value="Modifier" id="btUpdate">
 		</form>
+		<a href="#" id="addMonde">Ajouter</a>
 	</div>
 	
 <div id="message">
