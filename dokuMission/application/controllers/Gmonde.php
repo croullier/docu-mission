@@ -22,8 +22,11 @@ class Gmonde extends \BaseCtrl {
 		$this->jsutils->getAndBindTo(".delete","click","Gmonde/delete","#message","{}");
 		//Appel la méthode monde_modif 
 		$this->jsutils->getAndBindTo(".update","click","Gmonde/monde_modif","#message","{}");
+		$this->jsutils->click("#addMonde",$this->jsutils->show("#frmAddMonde"));
+		$this->jsutils->click("#addMonde",$this->jsutils->hide("#modifier"));
 		//Affiche le formulaire de mise à jour du nom
 		$this->jsutils->click(".update",$this->jsutils->show("#modifier"));
+		$this->jsutils->click(".update",$this->jsutils->hide("#frmAddMonde"));
 		$this->jsutils->external();
 		$this->jsutils->compile();
 		$query = $this->doctrine->em->createQuery("SELECT m FROM Monde m");
