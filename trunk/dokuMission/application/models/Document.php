@@ -44,6 +44,16 @@ class Document
      * })
      */
     private $theme;
+    
+    /**
+     * @var \Utilisateur
+     *
+     * @ManyToOne(targetEntity="Utilisateur")
+     * @JoinColumns({
+     *   @JoinColumn(name="utilisateur_id", referencedColumnName="id")
+     * })
+     */
+    private $utilisateur;
 
 
     /**

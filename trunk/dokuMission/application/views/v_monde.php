@@ -4,6 +4,7 @@
 <?php echo $script_foot;?>
 
 <h1>Gestion des mondes</h1>
+<div id="containListe">
 <?php 
 foreach ($mondes as $monde){
 	echo("<div class='space'>".$monde->getLibelle(). " </div><div class='space'> <a href='#' class='update' id='".$monde->getId()."'>Modifier </a></div><div class='space'><a href='#' class='delete' id='".$monde->getId()."'>Supprimer </a></div><br>");
@@ -11,7 +12,9 @@ foreach ($mondes as $monde){
 }
 
 ?>
-<div class="clear"></div>
+</div>
+
+<div id="containForm">
 	<form id="frmAddMonde" name="frmAddMonde">
 		<label for="libelle">Ajouter:</label> <input type="text" name="libelle" id="libelle">
 		<input type="button" value="Ajouter" id="btAdd">
@@ -24,6 +27,7 @@ foreach ($mondes as $monde){
 		</form>
 		<a href="#" id="addMonde">Ajouter</a>
 	</div>
+</div>
 	
 <div id="message">
 </div>
