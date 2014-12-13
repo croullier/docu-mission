@@ -3,7 +3,7 @@
 
 	<hr>
 		<center>
-			Copyright &copy;  | Tous droits réservés | 2014
+			Copyright &copy;  | Tous droits rÃ©servÃ©s | 2014
 		</center>
 
 </footer>

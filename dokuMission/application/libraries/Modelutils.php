@@ -7,6 +7,29 @@ class Modelutils {
 	 * @return Utilisateur
 	 */
 	public function getActiveUser(){
-		return "moi";
+		$CI =& get_instance();
+		return $CI->session->userdata("user");
+	}
+	
+	/**
+	 * Nettoie les variables global Post
+	 * @param unknown $param
+	 * @return string
+	 */
+	public function cleanPost($param){
+		$param=htmlspecialchars($param);
+		return $param;	
+	}
+	
+	public function ifempty($params=array()){
+		$checked=true;
+		foreach ($params as $param){
+			if($checked==true){
+				if(empty($param)){
+					$checked=false;
+				}
+			}
+		}
+		return $checked;
 	}
 }

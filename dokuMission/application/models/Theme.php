@@ -47,6 +47,16 @@ class Theme
      * })
      */
     private $theme;
+    
+    /**
+     * @var \Utilisateur
+     *
+     * @ManyToOne(targetEntity="Utilisateur")
+     * @JoinColumns({
+     *   @JoinColumn(name="utilisateur_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $utilisateur;
 
 
     /**
@@ -127,4 +137,12 @@ class Theme
     {
         return $this->theme;
     }
+	public function getUtilisateur() {
+		return $this->utilisateur;
+	}
+	public function setUtilisateur(\Utilisateur $utilisateur) {
+		$this->utilisateur = $utilisateur;
+		return $this;
+	}
+	
 }

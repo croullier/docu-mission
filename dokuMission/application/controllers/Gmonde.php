@@ -6,6 +6,7 @@ class Gmonde extends \BaseCtrl {
 	{
 		parent::__construct();
 		$this->load->library('jsUtils');
+		$this->load->library('Modelutils');
 	}
 	public function index(){
 		define("WH", "Accueil->Admin->Gestion->Monde");
@@ -48,7 +49,7 @@ class Gmonde extends \BaseCtrl {
 			//On test que l'insertion à fonctionné
 			if($monde->getId()!=null){
 				echo "Ajouté";
-				$this->jsutils->get("/dokuMission/Gmonde/refresh/","body");
+				$this->jsutils->get("/dokuMission/Gmonde/index/","body");
 				echo $this->jsutils->compile();
 			}
 		}
@@ -63,6 +64,7 @@ class Gmonde extends \BaseCtrl {
 		$this->jsutils->doSomethingOn("#frmUpdateMonde", "append","'<input type=\"hidden\" name=\"key\" value=\"$param\">'");
 		$this->jsutils->getAndBindTo("#update", "click", "Gmonde/update/","#message");
 		$this->jsutils->postFormAndBindTo("#btUpdate", "click", "/dokuMission/Gmonde/update/", "frmUpdateMonde","#message");
+		
 		echo $this->jsutils->compile();
 	}
 	
@@ -70,7 +72,7 @@ class Gmonde extends \BaseCtrl {
 	 * Met à jour dans la base le nom du monde
 	 */
 	public function update(){
-		if(!empty($_POST['libelle']) && !empty($_POST['key'])){
+		if($this->modelutils->ifempty(array($_POST['libelle'],$_POST['key']))==true){
 			$libelle=htmlspecialchars($_POST['libelle']);
 			$key=htmlspecialchars($_POST['key']);
 			$query = $this->doctrine->em->createQuery("UPDATE Monde m SET m.libelle='".$libelle."' WHERE m.id='".$key."' ");
@@ -78,9 +80,12 @@ class Gmonde extends \BaseCtrl {
 			$numUpdated = $query->execute();
 			if($numUpdated ==1){
 				echo "Mis à jour";
-				$this->jsutils->get("/dokuMission/Gmonde/refresh/","body");
+				$this->jsutils->get("/dokuMission/Gmonde/index/","body");
 				echo $this->jsutils->compile();
 			}
+		}
+		else{
+			echo "Erreur";
 		}
 		
 	}	
@@ -94,7 +99,7 @@ class Gmonde extends \BaseCtrl {
 		$numDeleted= $query->execute();
 		if($numDeleted ==1){
 			echo "Suprimé";
-			$this->jsutils->get("/dokuMission/Gmonde/refresh/","body");
+			$this->jsutils->get("/dokuMission/Gmonde/index/","body");
 			echo $this->jsutils->compile();
 		}
 	}
