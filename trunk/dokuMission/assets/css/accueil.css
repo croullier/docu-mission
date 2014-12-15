@@ -40,7 +40,14 @@ h1{
 	display: none;
 }
 
+#confirmDelete{
+	margin:30px 0 0 0 ;
+	
+}
 
+#confYN{
+	margin:5px;
+}
 
 .clear{
 	clear:left;
