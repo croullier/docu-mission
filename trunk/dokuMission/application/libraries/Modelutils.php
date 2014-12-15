@@ -13,7 +13,7 @@ class Modelutils {
 	
 	/**
 	 * Nettoie les variables global Post
-	 * @param unknown $param
+	 * @param $param
 	 * @return string
 	 */
 	public function cleanPost($param){
@@ -21,6 +21,11 @@ class Modelutils {
 		return $param;	
 	}
 	
+	/**
+	 * Récupére un array puis vérifie si une variable est vide
+	 * @param $params
+	 * @return boolean
+	 */
 	public function ifempty($params=array()){
 		$checked=true;
 		foreach ($params as $param){
