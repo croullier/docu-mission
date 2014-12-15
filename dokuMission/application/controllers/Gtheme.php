@@ -22,8 +22,8 @@ class Gtheme extends \BaseCtrl {
 		$this->jsutils->postFormAndBindTo("#btAdd", "click", "/dokuMission/Gtheme/add/", "frmAddTheme","#message");
 		//Supprime le thÃ¨me sur lequel on a cliquÃ©
 		$this->jsutils->getAndBindTo(".delete","click","Gtheme/deleteForm","#message","{}");
-		//Appel la mÃ©thode monde_modif 
-		$this->jsutils->getAndBindTo(".update","click","Gtheme/monde_modif","#message","{}");
+		//Appel la mÃ©thode theme_modif 
+		$this->jsutils->getAndBindTo(".update","click","Gtheme/theme_modif","#message","{}");
 		$this->jsutils->click("#addTheme",$this->jsutils->show("#frmAddTheme"));
 		$this->jsutils->click("#addTheme",$this->jsutils->hide("#modifier"));
 		//Affiche le formulaire de mise Ã  jour du nom
@@ -103,7 +103,7 @@ class Gtheme extends \BaseCtrl {
 	 * Ajoute l'id du thÃ¨me dans le formulaire et appel la mÃ©ode update pour mettre Ã  jour dans la base
 	 * @param $param
 	 */
-	public function monde_modif($param){
+	public function theme_modif($param){
 		//explosion de la variable pour récupérer les données
 		$param=explode("-", $param);
 		$domaine=$param[1];
@@ -223,8 +223,8 @@ class Gtheme extends \BaseCtrl {
 	}	
 	
 	/**
-	 * 
-	 * @param $param affiche les documents associé au thème
+	 * Affiche les documents associé au thème
+	 * @param $param theme
 	 */
 	public function deleteForm($param){
 		$param=explode("-", $param);
@@ -238,9 +238,33 @@ class Gtheme extends \BaseCtrl {
 			$this->load->view("v_formdeletetheme",array("theme"=>$libelle));
 		}
 		else{
-			echo $this->delete($param[0]);
+			$query=$this->doctrine->em->createQuery("SELECT t FROM Theme t WHERE t=$param[0]");
+			$libelleTheme=$query->getSingleResult();
+			$this->jsutils->postFormAndBindTo("#btConfirmDelete", "click", "Gtheme/checkConfirmDelete", "frmconfirmDelete","#message");
+			$this->jsutils->doSomethingOn("#keyTheme", "remove");
+			$this->jsutils->doSomethingOn("#frmconfirmDelete", "append","'<input type=\"hidden\" id=\"keyTheme\" name=\"keyTheme\" value=\"$param[0]\">'");
+			echo $this->jsutils->compile();
+			$this->load->view("v_confirmdeletetheme", array("theme"=>$libelleTheme));
+			//echo $this->delete($param[0]);
 		}	
 	}
+	
+	/**
+	 * Supprime le thème si coché oui
+	 * @param $param theme
+	 */
+	public function checkConfirmDelete($param){
+		if(!empty($_POST['them'])){
+				if($_POST['them']=="oui"){
+					$this->delete($_POST['keyTheme']);
+				}
+				
+		}
+		else{
+				echo "une erreur est arrivée";
+		}
+	}
+	
 	
 	/**
 	 * Si on garde les doccuments ou on les supprimes avec les thèmes

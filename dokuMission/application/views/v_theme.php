@@ -88,6 +88,8 @@ foreach ($themes as $theme){
 	</div>
 </div>
 <div class="clear"></div>
+
 <div id="message"></div> 
+
 </div>
 <div class="clear"></div>
