@@ -8,6 +8,7 @@ class Gmonde extends \BaseCtrl {
 		$this->load->library('jsUtils');
 		$this->load->library('Modelutils');
 	}
+
 	public function index(){
 		define("WH", "Accueil->Admin->Gestion->Monde");
 		$this->load->view("v_header");
@@ -19,36 +20,38 @@ class Gmonde extends \BaseCtrl {
 	public function refresh(){
 		//Poste le formulaire de modification des mondes
 		$this->jsutils->postFormAndBindTo("#btAdd", "click", "/dokuMission/Gmonde/add/", "frmAddMonde","#message");
-		//Supprime le monde sur lequel on a cliqué
+		//Supprime le monde sur lequel on a cliquï¿½
 		$this->jsutils->getAndBindTo(".delete","click","Gmonde/delete","#message","{}");
-		//Appel la méthode monde_modif 
+		//Appel la mï¿½thode monde_modif 
 		$this->jsutils->getAndBindTo(".update","click","Gmonde/monde_modif","#message","{}");
+
 		$this->jsutils->click("#addMonde",$this->jsutils->show("#frmAddMonde"));
 		$this->jsutils->click("#addMonde",$this->jsutils->hide("#modifier"));
-		//Affiche le formulaire de mise à jour du nom
+		//Affiche le formulaire de mise ï¿½ jour du nom
+
 		$this->jsutils->click(".update",$this->jsutils->show("#modifier"));
 		$this->jsutils->click(".update",$this->jsutils->hide("#frmAddMonde"));
 		$this->jsutils->external();
 		$this->jsutils->compile();
-		$query = $this->doctrine->em->createQuery("SELECT m FROM Monde m");
+		$query = $this->doctrine->em->createQuery("SELECT DISTINCT m FROM Monde m");
 		$monde = $query->getResult();
 		$this->load->view('v_monde',array('mondes'=>$monde));
 	}
 	
 	/**
-	 * Ajouter le monde à la Base de donnée 
+	 * Ajouter le monde ï¿½ la Base de donnï¿½e 
 	 */
 	public function add(){	
 		if(!empty($_POST['libelle'])){
-			//Supprime les caractère non acceptable
+			//Supprime les caractï¿½re non acceptable
 			$libelle=htmlspecialchars($_POST['libelle']);
 			$monde = new Monde();
 			$monde->setLibelle($libelle);
 			$this->doctrine->em->persist($monde);
 			$this->doctrine->em->flush();
-			//On test que l'insertion à fonctionné
+			//On test que l'insertion ï¿½ fonctionnï¿½
 			if($monde->getId()!=null){
-				echo "Ajouté";
+				echo "Ajoutï¿½";
 				$this->jsutils->get("/dokuMission/Gmonde/index/","body");
 				echo $this->jsutils->compile();
 			}
@@ -56,30 +59,28 @@ class Gmonde extends \BaseCtrl {
 	}
 	
 	/**
-	 * Ajoute l'id du monde dans le formulaire et appel la méthode update pour mettre à jour dans la base
+	 * Ajoute l'id du monde dans le formulaire et appel la mï¿½thode update pour mettre ï¿½ jour dans la base
 	 * @param $param
 	 */
-	public function monde_modif($param){
-		
+	public function monde_modif($param){		
 		$this->jsutils->doSomethingOn("#frmUpdateMonde", "append","'<input type=\"hidden\" name=\"key\" value=\"$param\">'");
 		$this->jsutils->getAndBindTo("#update", "click", "Gmonde/update/","#message");
 		$this->jsutils->postFormAndBindTo("#btUpdate", "click", "/dokuMission/Gmonde/update/", "frmUpdateMonde","#message");
 		
 		echo $this->jsutils->compile();
 	}
-	
 	/**
-	 * Met à jour dans la base le nom du monde
+	 * Met ï¿½ jour dans la base le nom du monde
 	 */
 	public function update(){
 		if($this->modelutils->ifempty(array($_POST['libelle'],$_POST['key']))==true){
 			$libelle=htmlspecialchars($_POST['libelle']);
 			$key=htmlspecialchars($_POST['key']);
 			$query = $this->doctrine->em->createQuery("UPDATE Monde m SET m.libelle='".$libelle."' WHERE m.id='".$key."' ");
-			//execute la requête
+			//execute la requï¿½te
 			$numUpdated = $query->execute();
 			if($numUpdated ==1){
-				echo "Mis à jour";
+				echo "Mis ï¿½ jour";
 				$this->jsutils->get("/dokuMission/Gmonde/index/","body");
 				echo $this->jsutils->compile();
 			}
@@ -98,7 +99,7 @@ class Gmonde extends \BaseCtrl {
 		$query = $this->doctrine->em->createQuery("DELETE Monde m  WHERE m.id='".$param."'");
 		$numDeleted= $query->execute();
 		if($numDeleted ==1){
-			echo "Suprimé";
+			echo "Suprimï¿½";
 			$this->jsutils->get("/dokuMission/Gmonde/index/","body");
 			echo $this->jsutils->compile();
 		}
