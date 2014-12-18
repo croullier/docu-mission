@@ -1,5 +1,5 @@
 
-.image{
+.logo{
 	float: left;
 	margin-top: -20px;
 }
@@ -18,6 +18,30 @@ h1{
 	font-size: 250%;
 }
 
+h2{
+	text-align: center;
+	color: black;
+	font-family: Constantia;
+	font-size: 140%;
+}
+
+h3{
+	color: black;
+	font-family: Constantia;
+	font-size: 100%;
+}
+
+h4{
+	color: black;
+	font-family: Constantia;
+	font-size: 100%;
+}
+
+button{
+	font-family: Constantia;
+	margin-left: 50px;
+	font-size: 100%
+}
 
 .connexion {
 	float: right;
@@ -69,9 +93,14 @@ h1{
 }
 
 
+
 #contain h1{
 	font-size:1.4em;
 	text-align:left;
+<<<<<<< .mine
+	margin-bottom:20px;
+=======
+>>>>>>> .r36
 }
 
 h2{
@@ -111,10 +140,11 @@ h3{
   	text-decoration: none;
 }
 
-.rechercher:hover {
-  background: #bab4ba;
-  text-decoration: none;
+.rechercher:hover{
+	background: #bab4ba;
+	text-decoration: none;
 }
+
 
 #conteneur {
 	width:1000px; 
@@ -138,7 +168,7 @@ h3{
 	float: left;
 	margin-top: 8px;
 	margin-left: 5px;
-    height: 25px;
+    height: 30px;
     width: 160px;
     border: 1px solid #B9BDC1;
     color: #797979;
@@ -155,9 +185,12 @@ h3{
     outline: 0;
 }
 
+
 .search img{
 	margin-top:8px;
 }
+<<<<<<< .mine
+=======
 
 #message{
 	margin:15px 30px;
@@ -187,3 +220,4 @@ list-style-type: none;
 	
 	
 
+>>>>>>> .r36
