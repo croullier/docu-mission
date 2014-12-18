@@ -162,3 +162,28 @@ h3{
 #message{
 	margin:15px 30px;
 }
+
+#contenuDomaine{
+	width:720px;
+	margin:0 auto;
+	font-family: Arial;
+	font-size: 14px;
+}
+#titreDomaine{
+	font-family: Courier New;
+  	color: #000000;
+  	font-size: 22px;
+  	margin:0 0 0 220;
+}	
+#sousTitreDomaine{
+	font-family: Courier New;
+  	color: #000000;
+  	font-size: 18px;
+  	margin:0 0 0 60;
+}
+li{
+list-style-type: none;
+}
+	
+	
+

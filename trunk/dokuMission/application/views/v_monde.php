@@ -1,4 +1,5 @@
 
+
 <div id="contain">
  <?php echo $library_src;?>
 <?php echo $script_foot;?>
@@ -7,10 +8,10 @@
 <div id="containListe">
 <?php 
 foreach ($mondes as $monde){
+
 	echo("<div class='space'>".$monde->getLibelle(). " </div><div class='space'> <a href='#' class='update' id='".$monde->getId()."'>Modifier </a></div><div class='space'><a href='#' class='delete' id='".$monde->getId()."'>Supprimer </a></div><br>");
 	echo "<div class='underline'></div>";
 }
-
 ?>
 </div>
 
