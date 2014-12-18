@@ -9,13 +9,17 @@
 <body>
 <div id="conteneur">
 	<div id="header">
-		<div class="image"><img src="<?php echo img_url("logo.png"); ?>" width="150" height="100"/></div>
+		<div class="logo"><img src="<?php echo img_url("logo.png"); ?>" width="150" height="100"/></div>
 			<h1>DocuMission</h1><br>
 			<hr>
+<<<<<<< .mine
+			<h4>Vous etes ici: <?php echo WH; ?></h4>
+=======
 			<h4>Vous êtes ici: <?php echo WH; ?></h4>
+>>>>>>> .r36
 				<button class="connexion">Connexion</button>
-			<hr>
-	</div>
+			<hr> 
+	</div> 
 </div>
    
 

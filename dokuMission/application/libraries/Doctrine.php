@@ -42,7 +42,7 @@ class Doctrine {
 		// set up proxy configuration
 		$config->setProxyDir(APPPATH.'models/Proxies');
 		$config->setProxyNamespace('Proxies');
-	
+		
 		// auto-generate proxy classes if we are in development mode
 		$config->setAutoGenerateProxyClasses(ENVIRONMENT == 'development');
 	
@@ -59,9 +59,16 @@ class Doctrine {
 				'user' => $db['default']['username'],
 				'password' => $db['default']['password'],
 				'host' => $db['default']['hostname'],
+<<<<<<< .mine
+				'dbname' => $db['default']['database'],
+				'charset' => $db['default']['char_set']
+			);
+		
+=======
 				'dbname' => $db['default']['database'],
 				'charset' =>$db['default']['char_set']
 		);
+>>>>>>> .r36
 	
 		// create the EntityManager
 		$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
