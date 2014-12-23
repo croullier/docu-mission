@@ -30,6 +30,6 @@ foreach ($mondes as $monde){
 	</div>
 </div>
 	
-<div id="message">
+<div id="message"></div>
 </div>
-</div>
+<div class="clear"></div>

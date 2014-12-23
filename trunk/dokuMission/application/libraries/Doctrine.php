@@ -59,16 +59,10 @@ class Doctrine {
 				'user' => $db['default']['username'],
 				'password' => $db['default']['password'],
 				'host' => $db['default']['hostname'],
-<<<<<<< .mine
 				'dbname' => $db['default']['database'],
 				'charset' => $db['default']['char_set']
 			);
-		
-=======
-				'dbname' => $db['default']['database'],
-				'charset' =>$db['default']['char_set']
-		);
->>>>>>> .r36
+
 	
 		// create the EntityManager
 		$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);

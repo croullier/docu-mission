@@ -18,31 +18,35 @@ class Gtheme extends \BaseCtrl {
 	}
 
 	public function refresh(){
+		$user=1;
 		//Poste le formulaire de modification des th√®mes
 		$this->jsutils->postFormAndBindTo("#btAdd", "click", "/dokuMission/Gtheme/add/", "frmAddTheme","#message");
 		//Supprime le th√®me sur lequel on a cliqu√©
 		$this->jsutils->getAndBindTo(".delete","click","Gtheme/deleteForm","#message","{}");
 		//Appel la m√©thode theme_modif 
 		$this->jsutils->getAndBindTo(".update","click","Gtheme/theme_modif","#message","{}");
-		$this->jsutils->click("#addTheme",$this->jsutils->show("#frmAddTheme"));
+		$this->jsutils->click("#addTheme",$this->jsutils->show("#fieldAddTheme"));
 		$this->jsutils->click("#addTheme",$this->jsutils->hide("#modifier"));
 		//Affiche le formulaire de mise √† jour du nom
 		$this->jsutils->click(".update",$this->jsutils->show("#modifier"));
-		$this->jsutils->click(".update",$this->jsutils->hide("#frmAddTheme"));
+		$this->jsutils->click(".update",$this->jsutils->hide("#fieldAddTheme"));
 		//$this->jsutils->getAndBindTo(".update", "click", "Gtheme/domaineUpdate","#message");
 		$this->jsutils->getAndBindTo("#sltDomaineAdd", "change", "Gtheme/addParentThem/","#message","{}","","value");
 		$this->jsutils->external();
 		$this->jsutils->compile();
 		//RrÈcupËre tout les thËmes d'un utilisateur
-		$query = $this->doctrine->em->createQuery("SELECT t FROM Theme t JOIN t.domaine d JOIN t.utilisateur u WHERE u.id=1");
+		$query = $this->doctrine->em->createQuery("SELECT t FROM Theme t JOIN t.domaine d JOIN t.utilisateur u WHERE u.id=:utilisateur");
+		$query->setParameter('utilisateur',$user);
 		$theme = $query->getResult();
 		//RÈcupÈration des documents appartenant au thËme
 		foreach ($theme as $t){
-			$queryDoc = $this->doctrine->em->createQuery("SELECT d FROM Document d JOIN d.theme t WHERE t=".$t->getId());
+			$queryDoc = $this->doctrine->em->createQuery("SELECT d FROM Document d JOIN d.theme t WHERE t=:id");
+			$queryDoc->setParameter('id', $t->getId());
 			$document[] = $queryDoc->getResult();
 		}
 		//SÈlectionner tous les thdomaine d'un monde
-		$queryDomaine = $this->doctrine->em->createQuery("SELECT d FROM Domaine d JOIN d.monde m WHERE m.id=1");
+		$queryDomaine = $this->doctrine->em->createQuery("SELECT d FROM Domaine d JOIN d.monde m WHERE m.id=:utilisateur");
+		$queryDomaine->setParameter('utilisateur',$user);
 		$domaine = $queryDomaine->getResult();
 		
 		$this->load->view('v_theme',array('themes'=>$theme, 'documents'=>$document, 'domaines'=>$domaine));
@@ -61,7 +65,8 @@ class Gtheme extends \BaseCtrl {
 			$themeid=$this->modelutils->cleanPost($_POST['sltThemeAdd']);
 			$domaine=$this->modelutils->cleanPost($_POST['sltDomaineAdd']);
 			
-			$querylibelle=$this->doctrine->em->createQuery("SELECT t FROM theme t WHERE t.libelle='$libelle'");
+			$querylibelle=$this->doctrine->em->createQuery("SELECT t FROM theme t WHERE t.libelle=:libelle");
+			$querylibelle->setParameter('libelle',$libelle);
 			$themelibelle=$querylibelle->getResult();
 			
 			if($themelibelle==null){
@@ -69,16 +74,19 @@ class Gtheme extends \BaseCtrl {
 				$theme->setLibelle($libelle);
 				
 				if($themeid!="Aucun"){
-					$queryThemeid=$this->doctrine->em->createQuery("SELECT t FROM theme t WHERE t.id=$themeid");
+					$queryThemeid=$this->doctrine->em->createQuery("SELECT t FROM theme t WHERE t.id=:theme");
+					$queryThemeid->setParameter('theme',$themeid);
 					$themeid=$queryThemeid->getSingleResult();
 					$theme->setTheme($themeid);
 				}
 				//Instance de domaine
-				$queryDomaine=$this->doctrine->em->createQuery("SELECT d FROM domaine d WHERE d.id=$domaine");
+				$queryDomaine=$this->doctrine->em->createQuery("SELECT d FROM domaine d WHERE d.id=:domaine");
+				$queryDomaine->setParameter('domaine',$domaine);
 				$domaine=$queryDomaine->getSingleResult();
 				$theme->setDomaine($domaine);
 				//Instance de Utilisateur
-				$queryUsere=$this->doctrine->em->createQuery("SELECT u FROM utilisateur u WHERE u.id=$user");
+				$queryUsere=$this->doctrine->em->createQuery("SELECT u FROM utilisateur u WHERE u.id=:user");
+				$queryUsere->setParameter('user',$user);
 				$user=$queryUsere->getSingleResult();
 				$theme->setUtilisateur($user);
 				$this->doctrine->em->persist($theme);
@@ -108,7 +116,8 @@ class Gtheme extends \BaseCtrl {
 		$param=explode("-", $param);
 		$domaine=$param[1];
 		$theme=$param[0];
-		$nameTheme=$this->doctrine->em->createQuery("SELECT t FROM Theme t WHERE t.id=$theme");
+		$nameTheme=$this->doctrine->em->createQuery("SELECT t FROM Theme t WHERE t.id=:theme");
+		$nameTheme->setParameter('theme',$theme);
 		//RÈcupËrer un rÈsultat 
 		$theTheme=$nameTheme->getSingleResult();
 		$theTheme=$theTheme->getLibelle();
@@ -133,7 +142,8 @@ class Gtheme extends \BaseCtrl {
 	 */
 	public function addParentThem($param){
 		$this->jsutils->doSomethingOn("#sltThemeAdd option", "remove");
-		$queryTheme = $this->doctrine->em->createQuery("SELECT t FROM Theme t JOIN t.domaine d WHERE d.id=".$param);
+		$queryTheme = $this->doctrine->em->createQuery("SELECT t FROM Theme t JOIN t.domaine d WHERE d.id=:param");
+		$queryTheme->setParameter('param',$param);
 		$qTheme = $queryTheme->getResult();
 		//S'il n'y a pas de thËmme alors on affiche une option qui affirme qu'il n'y a pas de thËme pour ce domaine
 		if($qTheme == null){
@@ -156,7 +166,8 @@ class Gtheme extends \BaseCtrl {
 	 */
 	public function updateParentThem($param){
 		$this->jsutils->doSomethingOn("#sltThemeUpdate option", "remove");
-		$queryTheme = $this->doctrine->em->createQuery("SELECT t FROM Theme t JOIN t.domaine d WHERE d.id=".$param);
+		$queryTheme = $this->doctrine->em->createQuery("SELECT t FROM Theme t JOIN t.domaine d WHERE d.id=:param");
+		$queryTheme->setParameter('param',$param);
 		$qTheme = $queryTheme->getResult();
 		if($qTheme == null){
 			$this->jsutils->doSomethingOn("#sltThemeUpdate", "append","'<option>Aucun</option>'");
@@ -189,11 +200,15 @@ class Gtheme extends \BaseCtrl {
 
 			$user=$user;
 			if($libelle!=""){
-				$querylibelle=$this->doctrine->em->createQuery("SELECT t FROM theme t WHERE t.libelle='$libelle'");
+				$querylibelle=$this->doctrine->em->createQuery("SELECT t FROM theme t WHERE t.libelle=:libelle");
+				$querylibelle->setParameter('libelle',$libelle);
 				$themelibelle=$querylibelle->getResult();
 					
 				if($themelibelle==null){
-					$query = $this->doctrine->em->createQuery("UPDATE Theme t SET t.libelle='".$libelle."' WHERE t.id='".$key."' ");
+					$query = $this->doctrine->em->createQuery("UPDATE Theme t SET t.libelle=:libelle WHERE t.id=:key ");
+					$query->setParameters(array('libelle'=>$libelle,
+													'key'=>$key,
+					));
 					//execute la requ√™te
 					$query->execute();
 				}else{
@@ -203,13 +218,19 @@ class Gtheme extends \BaseCtrl {
 			}
 		
 			if($domaine!=""){
-				$query = $this->doctrine->em->createQuery("UPDATE Theme t SET t.domaine='".$domaine."' WHERE t.id='".$key."' ");
+				$query = $this->doctrine->em->createQuery("UPDATE Theme t SET t.domaine=:domaine WHERE t.id=:key ");
+				$query->setParameters(array('domaine'=>$domaine,
+									'key'=>$key
+				));
 				//execute la requ√™te
 				$query->execute();
 			}
 			
 			if($themeid!=""){
-				$query = $this->doctrine->em->createQuery("UPDATE Theme t SET t.theme='".$themeid."' WHERE t.id='".$key."' ");
+				$query = $this->doctrine->em->createQuery("UPDATE Theme t SET t.theme=:theme WHERE t.id=:key ");
+				$query->setParameters(array('theme'=>$themeid,
+									'key'=>$key
+				));
 				//execute la requ√™te
 				$query->execute();
 			}
@@ -228,19 +249,23 @@ class Gtheme extends \BaseCtrl {
 	 */
 	public function deleteForm($param){
 		$param=explode("-", $param);
-		$query=$this->doctrine->em->createQuery("SELECT d FROM Document d JOIN d.theme t WHERE t=$param[0]");
+		$query=$this->doctrine->em->createQuery("SELECT d FROM Document d JOIN d.theme t WHERE t=:param");
+		$query->setParameter('param',$param[0]);
 		$libelle=$query->getResult();
 		if($libelle!=null){
 			$this->jsutils->postFormAndBindTo("#btDelete", "click", "/dokuMission/Gtheme/saveDocs", "frmDelete","#message");
+			$this->jsutils->click("#btCancel",$this->jsutils->hide("#divDelete"));
 			$this->jsutils->doSomethingOn("#keyTheme", "remove");
 			$this->jsutils->doSomethingOn("#frmDelete", "append","'<input type=\"hidden\" id=\"keyTheme\" name=\"keyTheme\" value=\"$param[0]\">'");
 			echo $this->jsutils->compile();
 			$this->load->view("v_formdeletetheme",array("theme"=>$libelle));
 		}
 		else{
-			$query=$this->doctrine->em->createQuery("SELECT t FROM Theme t WHERE t=$param[0]");
+			$query=$this->doctrine->em->createQuery("SELECT t FROM Theme t WHERE t=:param");
+			$query->setParameter('param',$param[0]);
 			$libelleTheme=$query->getSingleResult();
-			$this->jsutils->postFormAndBindTo("#btConfirmDelete", "click", "Gtheme/checkConfirmDelete", "frmconfirmDelete","#message");
+			$this->jsutils->postFormAndBindTo(".btSendDelete", "click", "Gtheme/checkConfirmDelete", "frmconfirmDelete","#message");
+			$this->jsutils->click(".btCancel",$this->jsutils->hide("#confirmDelete"));
 			$this->jsutils->doSomethingOn("#keyTheme", "remove");
 			$this->jsutils->doSomethingOn("#frmconfirmDelete", "append","'<input type=\"hidden\" id=\"keyTheme\" name=\"keyTheme\" value=\"$param[0]\">'");
 			echo $this->jsutils->compile();
@@ -253,15 +278,12 @@ class Gtheme extends \BaseCtrl {
 	 * Supprime le thËme si cochÈ oui
 	 * @param $param theme
 	 */
-	public function checkConfirmDelete($param){
-		if(!empty($_POST['them'])){
-				if($_POST['them']=="oui"){
-					$this->delete($_POST['keyTheme']);
-				}
-				
+	public function checkConfirmDelete(){
+		if(!empty($_POST['keyTheme'])){
+			$this->delete($_POST['keyTheme']);			
 		}
 		else{
-				echo "une erreur est arrivÈe";
+			echo "une erreur est arrivÈe";
 		}
 	}
 	
@@ -271,13 +293,13 @@ class Gtheme extends \BaseCtrl {
 	 * @param $param
 	 */
 	public function saveDocs($param){
-		if(!empty($_POST['docs'])){
-			if($_POST['docs']=="non"){
-				$this->updateDocs($_POST['keyTheme']);
+		if(!empty($_POST['keyTheme'])){
+			if(!empty($_POST['docs'])){
+				$this->deleteDocs($_POST['keyTheme']);
 				$this->delete($_POST['keyTheme']);
 			}
 			else{
-				$this->deleteDocs($_POST['keyTheme']);
+				$this->updateDocs($_POST['keyTheme']);
 				$this->delete($_POST['keyTheme']);	
 			}
 		}
@@ -291,7 +313,8 @@ class Gtheme extends \BaseCtrl {
 	 * @param $param
 	 */
 	public function delete($param){
-		$query = $this->doctrine->em->createQuery("DELETE Theme t  WHERE t.id='".$param."'");
+		$query = $this->doctrine->em->createQuery("DELETE Theme t  WHERE t.id=:param");
+		$query->setParameter('param',$param);
 		$numDeleted= $query->execute();
 		if($numDeleted ==1){
 			echo "Suprim√©";
@@ -305,7 +328,8 @@ class Gtheme extends \BaseCtrl {
 	 * @param unknown $param
 	 */
 	public function updateDocs($param){
-		$query = $this->doctrine->em->createQuery("UPDATE Document d SET d.theme=Null WHERE d.theme='".$param."' ");
+		$query = $this->doctrine->em->createQuery("UPDATE Document d SET d.theme=Null WHERE d.theme=:param");
+		$query->setParameter('param',$param);
 		//execute la requ√™te
 		$v=$query->execute();
 	
@@ -316,7 +340,8 @@ class Gtheme extends \BaseCtrl {
 	 * @param $param
 	 */
 	public function deleteDocs($param){
-		$query = $this->doctrine->em->createQuery("DELETE Document d WHERE d.theme='".$param."'");
+		$query = $this->doctrine->em->createQuery("DELETE Document d WHERE d.theme=:param");
+		$query->setParameter('param',$param);
 		$numDeleted= $query->execute();
 		if($numDeleted ==1){
 			echo "Suprim√©";
